@@ -12,9 +12,7 @@ for i in range(t):
                 if doors[j] == 1:
                     flag = False
                     break
-            break
-    
-                    
+            break            
     if flag:
         print('YES')
     else:
