@@ -176,7 +176,7 @@ async def search(ctx,*,query:str):
         results = api.search_lyrics(track_name=song)
 
         # Print the results
-        if result:
+        if results:
             for result in results:
                 await ctx.send(f"{count} ){result.artist_name} - {result.track_name} ({result.album_name})")
                 count +=1
