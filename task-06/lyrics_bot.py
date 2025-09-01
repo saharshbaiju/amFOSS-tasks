@@ -32,7 +32,7 @@ bot = commands.Bot(command_prefix = '/',intents = intents)
 
 async def on_ready():
     print(f"{bot.user.name} ,....BOOTED SUCCESSFULLY")
-'''
+
 @bot.event
 async def on_member_join(member):
     await member.send(f"Welcome to the server {member.author.name}")
@@ -183,52 +183,66 @@ async def search(ctx,*,query:str):
         else:
             print('no match found')
     except Exception as e:
-        await ctx.send(f"no song found {e}")'''
+        await ctx.send(f"no song found {e}")
 
      
 @bot.command()
 async def add(ctx,*,query:str):
+    """
+    .
+    Adds song to you playlist
+    /add <song> - <artist>
+    """
     user = ctx.author.name 
     print(query)
     try:
         f = open("playlist.json","r")
         playlist = json.load(f)
-    except FileNotFoundError:
+    except (FileNotFoundError, json.JSONDecodeError):
         playlist = {}
     
     if user not in playlist:
-        playlist[user] = {}
+        playlist[user] = list()
 
-    
-    key = len(playlist[user])
-    key += 1
-    playlist[user][key] = query
+    playlist[user].append(query)
     await ctx.send("Song added to playlist")
     with open("playlist.json", "w") as f:
         json.dump(playlist, f, indent=4)
+
         
       
 
 @bot.command()
 async def view(ctx):
+    """
+    .
+    View the songs in your playlist
+    """
     user = ctx.author.name 
     try:
         f = open("playlist.json","r")
         playlist = json.load(f)
     except FileNotFoundError:
         await ctx.send('playlist empty')
+
     
-    if len(playlist[user]) == 0:
-        print('Playlist empty')
     
+    if user not in playlist or not playlist[user]:
+        await ctx.send("playlist empty")
+
     else:
         await ctx.send('Playlist loading')
-        for i in playlist[user]:
+        for i in range(len(playlist[user])):
             await ctx.send(f"{i}: {playlist[user][i]}")
     f.close()
 
 @bot.command()
-async def remove(ctx,*,query:str):
+async def remove(ctx,*,query:int):
+    """
+    .
+    Remove a specific song
+    You can give the song serial number in view function
+    """
     print(query)
     user = ctx.author.name 
     try:
@@ -236,17 +250,41 @@ async def remove(ctx,*,query:str):
         playlist = json.load(f)
     except FileNotFoundError:
         await ctx.send('playlist empty')
+    if user not in playlist or not playlist[user]:
+        await ctx.send("playlist empty")
 
-    if len(playlist[user]) == 0:
-        print('Playlist empty')
+    elif len(playlist[user]) == 0:
+        await ctx.send('playlist empty')
     
     
     await ctx.send(f"Removing .... {query,':', playlist[user][query]}")
-    del playlist[user][query]
+    playlist[user].pop(query)
     await ctx.send(f"Requested song removed successfully")
     f = open('playlist.json','w')
     json.dump(playlist,f,indent=4)
     f.close()
 
-bot.run(token,log_handler = handler,log_level = logging.DEBUG)
+@bot.command()
+async def clear(ctx):
+    """
+    .
+    Clear all songs in your playlist
+    """
+    await ctx.send('Clearing the playlist')
+    user = ctx.author.name 
+    try:
+        f = open("playlist.json","r")
+        playlist = json.load(f)
+    except FileNotFoundError:
+        await ctx.send('playlist empty')
 
+    if user not in playlist or not playlist[user]:
+        await ctx.send("playlist empty")
+
+    del playlist[user]
+    await ctx.send('wiped')
+
+    f = open('playlist.json','w')
+    json.dump(playlist,f,indent=4)
+    f.close()
+bot.run(token,log_handler = handler,log_level = logging.DEBUG)
