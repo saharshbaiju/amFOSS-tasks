@@ -5,10 +5,10 @@ from lrclib import LrcLibAPI#for searching
 import musicbrainzngs#for track information
 
 
-import discord
-from discord.ext import commands
-import logging
-from dotenv import load_dotenv
+import discord # discord connectivity
+from discord.ext import commands#for commands
+import logging #for loging files
+from dotenv import load_dotenv#enviornment token 
 import os
 
 musicbrainzngs.set_useragent("DiscordBot", "1.0", "saharshbaiju@gmail.com")
@@ -41,15 +41,8 @@ async def on_member_join(member):
 async def on_message(message):
     if message.author == bot.user:
         return
-    if "shit" in message.content.lower():
-        await message.delete()
-        await message.channel.send(f"{message.author.mention} - dont use that word!!")
-
     await bot.process_commands(message)
 
-@bot.command()
-async def hello(ctx):
-    await ctx.send(f"Hello {ctx.author.mention}")
 
 #|||||||||||||||||||||||||||||||||||||failed attempts|||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -89,12 +82,16 @@ async def hello(ctx):
 #|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 @bot.command()
-@commands.has_role('legends')
 async def lyrics(ctx, *, query: str):
+    """
+    .
+    /lyrics <song> - <artist>  
+    Fetches and displays song lyrics. 
+    """
     try:
         # split query into song and artist
         if "-" not in query:
-            await ctx.send("wrong format, please use this format: `/lyrics <song> - <artist>`")
+            await ctx.send("wrong format, please use this format: /lyrics <song> - <artist>")
             return
 
         song, artist = query.split("-", 1)
@@ -116,15 +113,20 @@ async def lyrics(ctx, *, query: str):
             else:
                 with open("lyrics.txt", "w", encoding="utf-8") as f:
                     f.write(lyrics)
-                await ctx.send("📄 Lyrics too long, sent as file:", file=discord.File("lyrics.txt"))
+                await ctx.send("Lyrics too long, sent as file:", file=discord.File("lyrics.txt"))
         else:
-            await ctx.send("❌ No lyrics found.")
+            await ctx.send("No lyrics found.")
     except Exception as e:
         await ctx.send(f"Error: {e}")
 
 
 @bot.command()
 async def track(ctx,*,query:str):
+    """
+    .
+    Gives detailed track information 
+    /track <Song> - <Artist>
+    """
     try:
         # split query into song and artist
         if "-" not in query:
@@ -156,17 +158,13 @@ async def track(ctx,*,query:str):
         pass
 
 
-
-
-
-
-
-
-
-
-
 @bot.command()
 async def search(ctx,*,query:str):
+    """
+    .
+    Enables you to search for a song
+    /search <song>
+    """
     count = 1
     await ctx.send("Searching .... pls wait")
     try:
@@ -188,22 +186,7 @@ async def search(ctx,*,query:str):
 
 
 
-@bot.command()
-async def assign(ctx, *, role_name: str):
-    role = discord.utils.get(ctx.guild.roles, name=role_name)
-    if role:
-        await ctx.author.add_roles(role)
-        await ctx.send(f"{ctx.author.mention} is now assigned to {role.name}")
-    else:
-        await ctx.send("Role doesn't exist")
 
-@bot.command()
-async def remove(ctx):
-    role = discord.utils.get(ctx.guild.roles, name = role_name)
-    if role:
-        await ctx.author.remove_roles(role)
-        await ctx.send(f"{ctx.author.mention} has has the {role_name} removed")
-    else:
-        await ctx.send("Role doesn't exist")
 
 bot.run(token,log_handler = handler,log_level = logging.DEBUG)
+
