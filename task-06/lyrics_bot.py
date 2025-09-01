@@ -1,3 +1,4 @@
+import json
 import requests #for lyrics
 
 from lrclib import LrcLibAPI#for searching
@@ -13,7 +14,6 @@ import os
 
 musicbrainzngs.set_useragent("DiscordBot", "1.0", "saharshbaiju@gmail.com")
 #discord setup
-role_name = "legends"
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
@@ -24,6 +24,7 @@ intents.message_content = True
 intents.members = True
 
 bot = commands.Bot(command_prefix = '/',intents = intents)
+
 #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
@@ -31,7 +32,7 @@ bot = commands.Bot(command_prefix = '/',intents = intents)
 
 async def on_ready():
     print(f"{bot.user.name} ,....BOOTED SUCCESSFULLY")
-
+'''
 @bot.event
 async def on_member_join(member):
     await member.send(f"Welcome to the server {member.author.name}")
@@ -182,11 +183,70 @@ async def search(ctx,*,query:str):
         else:
             print('no match found')
     except Exception as e:
-        await ctx.send(f"no song found {e}")
+        await ctx.send(f"no song found {e}")'''
 
+     
+@bot.command()
+async def add(ctx,*,query:str):
+    user = ctx.author.name 
+    print(query)
+    try:
+        f = open("playlist.json","r")
+        playlist = json.load(f)
+    except FileNotFoundError:
+        playlist = {}
+    
+    if user not in playlist:
+        playlist[user] = {}
 
+    
+    key = len(playlist[user])
+    key += 1
+    playlist[user][key] = query
+    await ctx.send("Song added to playlist")
+    with open("playlist.json", "w") as f:
+        json.dump(playlist, f, indent=4)
+        
+      
 
+@bot.command()
+async def view(ctx):
+    user = ctx.author.name 
+    try:
+        f = open("playlist.json","r")
+        playlist = json.load(f)
+    except FileNotFoundError:
+        await ctx.send('playlist empty')
+    
+    if len(playlist[user]) == 0:
+        print('Playlist empty')
+    
+    else:
+        await ctx.send('Playlist loading')
+        for i in playlist[user]:
+            await ctx.send(f"{i}: {playlist[user][i]}")
+    f.close()
 
+@bot.command()
+async def remove(ctx,*,query:str):
+    print(query)
+    user = ctx.author.name 
+    try:
+        f = open("playlist.json","r")
+        playlist = json.load(f)
+    except FileNotFoundError:
+        await ctx.send('playlist empty')
+
+    if len(playlist[user]) == 0:
+        print('Playlist empty')
+    
+    
+    await ctx.send(f"Removing .... {query,':', playlist[user][query]}")
+    del playlist[user][query]
+    await ctx.send(f"Requested song removed successfully")
+    f = open('playlist.json','w')
+    json.dump(playlist,f,indent=4)
+    f.close()
 
 bot.run(token,log_handler = handler,log_level = logging.DEBUG)
 
