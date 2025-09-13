@@ -1,3 +1,5 @@
+# TASK-01 : TERMINAL HUNT  
+
 ## MY EXPERIENCE
 Even though I had some experience with Linux, I was not used to the CLI at first; but by doing this task, I got the feel of it, became good at using Linux commands (as listed at the end of this MD file), and also became proficient at file traversal using the CLI.
 # The first solution
