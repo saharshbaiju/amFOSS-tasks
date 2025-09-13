@@ -1,25 +1,26 @@
-<h1>The first solution</h1>
-
-
-
-Found the first key from russia folder using grep command and viewed it by "less"
+## MY EXPERIENCE
+Even though I had some experience with Linux, I was not used to the CLI at first; but by doing this task, I got the feel of it, became good at using Linux commands (as listed at the end of this MD file), and also became proficient at file traversal using the CLI.
+# The first solution
+- **Found the first key from russia folder using grep command and viewed it by "less"**
 
 You’ve uncovered the first piece of the puzzle — well done, explorer.
 
-The string: T25lIGxhc3QgdGFzaywgYW5kIHlvdSdsbCBoYXZlIHN1Y2Nlc3NmdWxseSBjb21
+**_The string: T25lIGxhc3QgdGFzaywgYW5kIHlvdSdsbCBoYXZlIHN1Y2Nlc3NmdWxseSBjb21_**_
 
 Its meaning holds power... and danger.
 Now that the facility has fulfilled its purpose, it's time to cover your tracks, erase it.  
 Wipe it from existence so no one — and nothing — can trace your path.
 The future depends on secrecy.
 
-<h1>The second solution</h1>
+# The second solution
 
 ![alt text](image.png)
 
 #Well done, traveller
 You've managed to breach the distortions near Saturn's ring and accessed the wormhole node
-This is your second key wbGV0ZWQgdGhlIFRlcm1pbmFsIEh1bnQhIFJ1biBncmF2aXR5
+
+**_This is your second key wbGV0ZWQgdGhlIFRlcm1pbmFsIEh1bnQhIFJ1biBncmF2aXR5_**
+
 But now, your mission isn't just to discover... it's to protect
 Back up the solutions.md to the safest place you know
 And what could be safer than your Home Sweet Home
@@ -29,20 +30,20 @@ Copy it to the directory that shares the name of your state and also take a scre
 
 
 
-<h1>The third solution</h1>
+# The third solution
 
 ![alt text](image-1.png)
 
-<h1>The fourth solution</h>
+# The fourth solution
 
 ![alt text](image-2.png)
 
-<h2>The commands i used to solve</h2>
-cd
-grep
-ls
-chmod
--r
--a
--l
-+x
+# The commands i used to solve
+- cd 
+- grep 
+- ls
+- chmod
+- -r
+- -a
+- -l
+- +x
