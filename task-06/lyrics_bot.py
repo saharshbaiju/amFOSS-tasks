@@ -117,7 +117,9 @@ async def lyrics(ctx, *, query: str):
                 await ctx.send("Lyrics too long, sent as file:", file=discord.File("lyrics.txt"))
         else:
             await ctx.send("No lyrics found.")
+
     except Exception as e:
+
         await ctx.send(f"Error: {e}")
 
 
@@ -133,9 +135,9 @@ async def track(ctx,*,query:str):
         if "-" not in query:
             await ctx.send("wrong format, please use this format: `/lyrics <song> - <artist>`")
             return
-
         song, artist = query.split("-", 1)
         song = song.strip()
+
         artist = artist.strip()
         print(song)
         print(artist)
@@ -183,6 +185,7 @@ async def search(ctx,*,query:str):
         else:
             print('no match found')
     except Exception as e:
+        
         await ctx.send(f"no song found {e}")
 
      
