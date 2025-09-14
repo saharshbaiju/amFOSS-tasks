@@ -1,4 +1,4 @@
-# amFOSS - tasks
+# amFOSS-tasks
 
 ## INTRODUCTION
 My name is Saharsh Baiju and I am a first-year BTech student in Computer Science and Engineering (Core) at Amrita Vishwa Vidyapeetham, Amritapuri campus. I have some background in coding, mainly with Python at an intermediate level. I enjoy doing some fun coding projects ,drawing ,gym and some rc projects at free time . I try to keep a positive attitude in whatever I do, and if I find myself lacking in something, I make sure to work on it and improve.
