@@ -20,17 +20,17 @@ My statistics is as shown:
 
 | Task No. | Task Name                   | Status         |
 |----------|-----------------------------|----------------|
-| 0        | Install Linux               | Completed      |
-| 1        | Terminal Hunt               | Completed      |
-| 2        | The Cyberpunk Syndicate     | Completed      |
-| 3        | The Circularity Challenge   | Partially done |
+| 0        | [Install Linux](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-0)              | Completed      |
+| 1        | [Terminal Hunt](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-01)               | Completed      |
+| 2        | [The Cyberpunk Syndicate](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-02)     | Completed      |
+| 3        | [The Circularity Challenge](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-03)   | Partially done |
 | 4        | CineScope                   | Not attempted  |
-| 5        | TimeTickQuiz CLI            | Completed      |
-| 6        | LyricLounge Discord bot     | Completed      |
-| 7        | WordRush Mobile app         | Partially done |
-| 8        | OpenCV Treasure Map         | Partially done |
+| 5        | [TimeTickQuiz CLI](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-05)            | Completed      |
+| 6        | [LyricLounge Discord bot](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-06)     | Completed      |
+| 7        | [WordRush Mobile app](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-07)         | Partially done |
+| 8        | [OpenCV Treasure Map](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-08)        | Partially done |
 | 9        | SysForge challenge          | Not attempted  |
-| 10       | BattleCraft: Daily CSS      | Completed      |
-| 11       | OverTheWire Bandit          | Completed      |
-| 12       | Hello, World!               | Partially done |
+| 10       | [BattleCraft: Daily CSS](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-10)      | Completed      |
+| 11       | [OverTheWire Bandit](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-11)         | Completed      |
+| 12       | [Hello, World!](https://github.com/saharshbaiju/amFOSS-tasks/tree/main/task-12)               | Partially done |
 
